@@ -1,0 +1,21 @@
+<section>
+  <!-- <div [ngClass]="{'loading': !taskList.length}"></div> -->
+  <img [ngClass]="{'loading': !taskList.length}" src="../../../../../assets/images/bg-image.svg" alt="">
+  <ul *ngIf="taskList.length" >
+    <li *ngFor="let task of taskList; let i = index" >
+      <label class="switch">
+        <div class="switch-wrapper">
+          <input type="checkbox" [(ngModel)]="task.checked">
+          <span class="switch-button"></span>
+        </div>
+      </label>
+      <input type="text" [ngClass]="{'checked': task.checked === true}" [(ngModel)]="task.task" (keyup.enter)="validationInput(task.task, i)">
+      <button (click)="deleteItemTaskList(i)">
+        <i class="uil uil-trash-alt"></i>
+      </button>
+    </li>
+  </ul>
+</section>
+
+<app-input-add-items (emmitNewTask)="setTaskIntoList($event)"></app-input-add-items>
+<app-button-delete-all *ngIf="taskList.length" (click)="deleteAllTaskList()"></app-button-delete-all>

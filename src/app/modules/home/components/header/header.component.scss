@@ -1,0 +1,15 @@
+@import '../../../../../dist/scss/variables.scss';
+
+header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary-color;
+  
+  h1 {
+    color: $white-color;
+    font-size: 18px;
+  }
+}
